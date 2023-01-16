@@ -1,0 +1,175 @@
+*{ /* Seletor universal sozinho aplica a configuração no projeto todo*/
+  margin: 0;
+  padding: 0; /*Preenchimento interno*/
+  box-sizing: border-box;/*toda medida de preenchimento vai começar a partir da borda informada*/
+}
+
+:root {/*root é raiz, então está configuração será aplicada na raiz o que significa que vai ser aplicado em todo projeto*/
+  --text-color: white; /*todo texto ou informação que for na cor branca é substituida por essa variavel. O nome text-color é somente o nome da váriavel dessa cor, poderia ser qualquer outro nome.*/  
+  --bg-url: url(imagens/desktop/backgound\ dark.jpg);
+  --border-ul: rgba(255, 255, 255, 0.5);
+  --background-ul: rgba(255, 255, 255, 0.1);
+  --background-ul-hover: rgba(255, 255, 255, 0.05);
+  --background-social-hover: rgba(255, 255, 255, 0.2);
+  --button-url: url(imagens/moon-stars.svg);
+
+}
+
+.light{ /*O . 'ponto' é para chamar a CLASS, assim como # chama a DIV*/
+  --text-color: black;  
+  --bg-url: url(imagens/desktop/background\ light.jpg);
+  --border-ul: rgba(0, 0, 0, 0.5);
+  --background-ul: rgba(0, 0, 0, 0.05);
+  --background-ul-hover: rgba(0, 0, 0, 0.02);
+  --background-social-hover: rgba(0, 0, 0, 0.1);
+  --button-url: url(imagens/sun.svg);
+}
+
+body {
+  /*background-image: url(imagens/mobile/background\ dark.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;*/
+
+  /*é possível agrupar em toda configuração em uma tag*/
+  /*backgound: color image repeat position/size */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body *{
+  /* O asterisco é um seletor universal, sendo assim ele vai aplicar a configuração em tudo que estiver dentro do body*/
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+
+}
+
+#container{
+  width: 360px;
+  height: 712px;
+   /* centralizando div
+  margin-right: auto;
+  margin-left: auto;
+  */
+  /*margin: auto;*/
+  /*padding-top: 56px; preenchimento dentro da box*/
+  /*margin-top: 56px; preenchimento a partir da margem da página*/
+  margin: 56px auto 0px; /*margin funciona como um relógio, top, right, bottom, left, sendo assim o primeiro elemento é para top, o segundo para right, o terceiro para bottom e o quarto para letf. Por exemplo, se for informada somente 2 configurações o primeiro elemento vai ser para top e bottom e o segundo elemento para right e left. Neste caso agora, o 56 é para top, auto é para right e left, e 0px é para bottom.*/
+  padding: 0px 24px;
+}
+
+#switch{
+  position: relative;/* limita a possição dentro da box da tag*/
+  width: 64px;
+  /*switch é um display block, então para centralizar é só usar tag margin*/
+  margin: 4px auto;
+}
+
+#switch button{
+  height: 32px;
+  width: 32px;
+  background: white var(--button-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  left:0;
+  position: absolute;/*posicionamento absoluto dentro da tela*/
+  z-index: 1;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.light #switch button{
+  left:initial;
+  right:0;
+}
+
+#switch span{
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--background-ul);
+  border: 1px solid var(--border-ul);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+#profile{
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img{
+  display: block;
+  width: 112px;
+  /* img é um elemento inline, sendo assim não é possível aplicaro margin. Porém é possível colocar alinhamento no "pai" do elemento, por exemplo: poderia colocar #profile { text-align: center } isso iria centralizar a imagem sem transformar ela em block*/ 
+  /* site csstricks são os bugs ou truques do CSS*/
+  margin: auto;
+}
+
+#profile p{
+  /* profile é o pai, p é o filho, poderia colocar a configuração no body, porém ia aplicar para todos os elementos, como os elementos não teram todos a mesma configuração, foi inserido somente no p que está junto ao profile*/
+  font-weight: 500; /*negrito*/
+  /*font-size: 16px; tamanho da fonte, por padrão os navegadores já utilizão font-size 16px sendo assim não é necessário inserir, somente se for aumentar ou reduzir a fonte*/
+  line-height: 24px;/*altura linha*/
+  margin-top: 8px; /*neste caso não usa padding, pq já foi configurado o padding no profile e só quer inserir uma distancia da imagem para o texto*/
+}
+
+ul {
+list-style: none;
+/*
+display: flex; Display flex é quase a mesma coisa do block, porém é possível inserir algumas configurações diferentes
+flex-direction: row; Row faz com que a direção da lista fique na horizontal
+flex-direction: column; Direção da lista em forma de colunas
+gap: 8px; Espaçamento entre os itens da lista
+*/
+display: flex;
+flex-direction: column;
+gap: 16px;
+padding: 24px;
+}
+
+ul li a{
+  display: flex; /* O flex também cria uma linha central na box e utilizando os 2 códigos abaixo é possível centralizar a lista perfeitamente dentro da box*/
+  align-items: center;
+  justify-content: center;
+  padding: 16px 24px;/*Como falado antes, como só tem 2 medidas de borda o 16px vai ficar para top e bottom e o 24px para right e left*/
+  background: var(--background-ul);
+  border: 1px solid var(--border-ul);
+  border-radius: 8px; 
+  backdrop-filter: blur(4px); /* cria no fundo um esfumaçar// Para confirmar se a tag está sendo aceita em todos os navegadores, entra no site CAN I USE e procura pela tag, lá vai informar se está sendo utilizada e como */
+  -webkit-backdrop-filter: blur(8px); /*de acordo com o site o navegador SAFARI pede a extensão webkit para funcionar a tag backdrop*/
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s; /*é o tempo transição do efeito normal para o seletor */
+}
+
+ul li a:hover {/* : hover é um pseudo seletor, esse seletor só é ativado quando passamos o mouse por cima, então podemos alterar configurações, ativar imagens entre outras*/
+  background: var(--background-ul-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+#social-links{
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+#social-links a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+#social-links a:hover{
+  background: var(--background-social-hover);
+}
+
+footer{
+  font-size: 14px;
+  padding: 24px 0;
+  text-align: center;
+}
