@@ -44,8 +44,14 @@ body *{
 }
 
 #container{
+  /* Medidas iniciais par largura, após finalizar é necessário realizar o ajuste final para que o projeto acompanhe as medidas dos dispositivos que serão utilizados
   width: 360px;
   height: 712px;
+  */
+  /* Ajustes para medidas acompanhem o tamanho dos dispositivos*/
+  width: 100%;
+  max-width: 588px;
+  min-width: 320px;
    /* centralizando div
   margin-right: auto;
   margin-left: auto;
