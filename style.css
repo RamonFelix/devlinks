@@ -6,7 +6,7 @@
 
 :root {
   --text-color: white; 
-  --bg-url: url(imagens/desktop/backgound\ dark.jpg);
+  --bg-url: url(imagens/mobile/background\ dark.jpg);
   --border-ul: rgba(255, 255, 255, 0.5);
   --background-ul: rgba(255, 255, 255, 0.1);
   --background-ul-hover: rgba(255, 255, 255, 0.05);
@@ -17,7 +17,7 @@
 
 .light{ 
   --text-color: black;  
-  --bg-url: url(imagens/desktop/background\ light.jpg);
+  --bg-url: url(imagens/mobile/background\ light.jpg);
   --border-ul: rgba(0, 0, 0, 0.5);
   --background-ul: rgba(0, 0, 0, 0.05);
   --background-ul-hover: rgba(0, 0, 0, 0.02);
@@ -27,6 +27,7 @@
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
+  height: 100%;
 }
 
 body *{
@@ -147,4 +148,15 @@ footer{
   font-size: 14px;
   padding: 24px 0;
   text-align: center;
+}
+
+@media (min-width = 700px) {
+  :root {
+    --bg-url: url(imagens/desktop/background\ dark.jpg);
+  }
+
+  .light {
+    --bg-url: url(imagens/desktop/background\ light.jpg);
+  }
+
 }
